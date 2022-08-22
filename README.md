@@ -11,3 +11,7 @@ Les comparto una frase que me encanto: "El talento gana partidos, pero el trabaj
 
 ### **Jhonatan Andrés Aldana Rivera**
 Administrador de Bases de Datos
+
+### **Filleral Yefreyner Mahecha Cantor**
+
+No importa cuanto tiempo tengas si no como lo usas
