@@ -12,6 +12,12 @@ Les comparto una frase que me encanto: "El talento gana partidos, pero el trabaj
 ### **Jhonatan Andrés Aldana Rivera**
 Administrador de Bases de Datos
 
+<<<<<<< HEAD
 ## Francisco Wuilfredo Viloria Torres
  El esfuerzo total es una victoria completa (Mahatma Gandhi)
  
+=======
+### **Filleral Yefreyner Mahecha Cantor**
+
+No importa cuanto tiempo tengas si no como lo usas
+>>>>>>> 5a2d6645609ca88ae00ace0727d0a9900a3c4137
