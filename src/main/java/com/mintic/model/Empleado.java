@@ -1,4 +1,4 @@
 package com.mintic.model;
 
-public class a {
+public class Empleado {
 }
