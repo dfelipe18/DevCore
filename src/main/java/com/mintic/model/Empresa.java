@@ -1,4 +1,4 @@
-package com.example.demo.modelo;
+package com.mintic.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +12,7 @@ public class Empresa {
 	private String direccion;
 	private String telefono;
 	private String NIT;
-	public empresa(int id, String nombre, String direccion, String telefono, String nIT) {
+	public Empresa(int id, String nombre, String direccion, String telefono, String nIT) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
