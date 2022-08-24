@@ -9,3 +9,7 @@ We are the best team.
 No importa cuanto tiempo tengas si no como lo usas
 
 Modelo de empresa ya fue modificado
+
+#Francisco Wuilfredo Viloria Torres
+
+Modelo de entidad empleado ya fue creado
