@@ -30,13 +30,13 @@ public class Transaction {
     }
 
     public Transaction(long id, String concept, float amount, Employee users, Enterprise enterprise, Date createdAt, Date updateAt) {
-        setId(id);
-        setConcept(concept);
-        setAmount(amount);
-        setUsers(users);
-        setEnterprise(enterprise);
-        setCreatedAt(createdAt);
-        setUpdateAt(updateAt);
+        this.id = id;
+        this.concept = concept;
+        this.amount = amount;
+        this.users = users;
+        this.enterprise = enterprise;
+        this.createdAt = createdAt;
+        this.updateAt = updateAt;
     }
 
     public long getId() {
