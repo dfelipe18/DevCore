@@ -1,4 +1,4 @@
-package com.mintic.model;
+package com.mintic.DevCore.model;
 
 import org.apache.catalina.User;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -14,12 +14,11 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private long id;
     private String image;
     private String phone;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @OneToOne(mappedBy = "profile")
+    private Employee user;
     @CreatedDate
     private Date createdAt;
     @LastModifiedDate
@@ -27,19 +26,20 @@ public class Profile {
 
     public Profile(){}
 
-    public Profile(String id, String image, String phone, Date createdAt, Date updateAt) {
+    public Profile(long id, String image, String phone, Employee user, Date createdAt, Date updateAt) {
         this.id = id;
         this.image = image;
         this.phone = phone;
+        this.user = user;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -57,6 +57,14 @@ public class Profile {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Employee getUser() {
+        return user;
+    }
+
+    public void setUser(Employee user) {
+        this.user = user;
     }
 
     public Date getCreatedAt() {

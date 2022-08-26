@@ -1,4 +1,4 @@
-package com.mintic.enums;
+package com.mintic.DevCore.enums;
 
 public enum Enum_RoleName {
     Admin,

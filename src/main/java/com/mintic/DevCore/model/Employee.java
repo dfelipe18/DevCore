@@ -1,27 +1,32 @@
-package com.mintic.model;
+package com.mintic.DevCore.model;
 
-import com.mintic.enums.Enum_RoleName;
+import com.mintic.DevCore.enums.Enum_RoleName;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(unique=true)
     private String email;
-    @OneToOne(mappedBy = "employee")
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "profile_id")
     private Profile profile;
+    @Enumerated(EnumType.STRING)
     private Enum_RoleName role;
+    @ManyToOne
+    @JoinColumn(name="enterprise_id")
     private Enterprise enterprise;
-    private Transaction [] transactions;
+    @OneToMany(mappedBy = "users")
+    private List<Transaction> transactions;
     @CreatedDate
     private Date createdAt;
     @LastModifiedDate
@@ -30,7 +35,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise, Transaction[] transactions, Date createdAt, Date updateAt) {
+    public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise, List<Transaction> transactions, Date createdAt, Date updateAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
@@ -81,11 +86,11 @@ public class Employee {
         this.enterprise = enterprise;
     }
 
-    public Transaction[] getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Transaction[] transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
