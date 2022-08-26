@@ -32,15 +32,15 @@ public class Enterprise {
 	}
 
 	public Enterprise(long id, String name, String document, String phone, String address, List<Employee> users, List<Transaction> transactions, Date createdAt, Date updateAt) {
-		this.id = id;
-		this.name = name;
-		this.document = document;
-		this.phone = phone;
-		this.address = address;
-		this.users = users;
-		this.transactions = transactions;
-		this.createdAt = createdAt;
-		this.updateAt = updateAt;
+		setId(id);
+		setName(name);
+		setDocument(document);
+		setPhone(phone);
+		setAddress(address);
+		setUsers(users);
+		setTransactions(transactions);
+		setCreatedAt(createdAt);
+		setUpdateAt(updateAt);
 	}
 
 	public long getId() {

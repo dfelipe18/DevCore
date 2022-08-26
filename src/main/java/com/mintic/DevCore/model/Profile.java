@@ -27,12 +27,12 @@ public class Profile {
     public Profile(){}
 
     public Profile(long id, String image, String phone, Employee user, Date createdAt, Date updateAt) {
-        this.id = id;
-        this.image = image;
-        this.phone = phone;
-        this.user = user;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        setId(id);
+        setImage(image);
+        setPhone(phone);
+        setUser(user);
+        setCreatedAt(createdAt);
+        setUpdateAt(updateAt);
     }
 
     public long getId() {

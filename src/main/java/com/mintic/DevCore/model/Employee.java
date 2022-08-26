@@ -36,14 +36,14 @@ public class Employee {
     }
 
     public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise, List<Transaction> transactions, Date createdAt, Date updateAt) {
-        this.id = id;
-        this.email = email;
-        this.profile = profile;
-        this.role = role;
-        this.enterprise = enterprise;
-        this.transactions = transactions;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        setId(id);
+        setEmail(email);
+        setProfile(profile);
+        setRole(role);
+        setEnterprise(enterprise);
+        setTransactions(transactions);
+        setCreatedAt(createdAt);
+        setUpdateAt(updateAt);
     }
 
     public long getId() {
