@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 
     private long id;
@@ -20,7 +20,7 @@ public class Employee {
     @OneToOne(mappedBy = "employee")
     private Profile profile;
     private Enum_RoleName role;
-    private Empresa enterprise;
+    private Enterprise enterprise;
     private Transaction [] transactions;
     @CreatedDate
     private Date createdAt;
@@ -30,7 +30,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(long id, String email, Profile profile, Enum_RoleName role, Empresa enterprise, Transaction[] transactions, Date createdAt, Date updateAt) {
+    public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise, Transaction[] transactions, Date createdAt, Date updateAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
@@ -73,11 +73,11 @@ public class Employee {
         this.role = role;
     }
 
-    public Empresa getEnterprise() {
+    public Enterprise getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(Empresa enterprise) {
+    public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
     }
 

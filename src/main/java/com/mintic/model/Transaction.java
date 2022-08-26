@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Transaction")
+@Table(name = "transaction")
 public class Transaction {
 
     @Id
@@ -16,7 +16,7 @@ public class Transaction {
     private String concept;
     private float amount;
     @ManyToOne
-    private Empresa enterprise;
+    private Enterprise enterprise;
     @CreatedDate
     private Date createdAt;
     @LastModifiedDate
@@ -25,7 +25,7 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(long id, String concept, float amount, Empresa enterprise, Date createdAt, Date updateAt) {
+    public Transaction(long id, String concept, float amount, Enterprise enterprise, Date createdAt, Date updateAt) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
@@ -58,11 +58,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Empresa getEnterprise() {
+    public Enterprise getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(Empresa enterprise) {
+    public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
     }
 

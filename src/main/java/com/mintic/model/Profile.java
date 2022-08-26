@@ -1,5 +1,7 @@
 package com.mintic.model;
 
+import org.apache.catalina.User;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -7,7 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Profile")
+@Table(name = "profile")
 public class Profile {
 
     @Id
@@ -15,6 +17,9 @@ public class Profile {
     private String id;
     private String image;
     private String phone;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
     @CreatedDate
     private Date createdAt;
     @LastModifiedDate
