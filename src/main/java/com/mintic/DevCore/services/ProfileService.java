@@ -1,4 +1,4 @@
 package com.mintic.DevCore.services;
 
-public class a {
+public class ProfileService {
 }

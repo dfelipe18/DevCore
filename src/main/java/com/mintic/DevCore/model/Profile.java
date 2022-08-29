@@ -1,7 +1,5 @@
 package com.mintic.DevCore.model;
 
-import org.apache.catalina.User;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
