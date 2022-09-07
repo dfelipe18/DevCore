@@ -1,5 +1,6 @@
 package com.mintic.DevCore.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -15,7 +16,8 @@ public class Profile {
     private long id;
     private String image;
     private String phone;
-    @OneToOne(mappedBy = "profile")
+    @JsonManagedReference(value = "profile-employee")
+    @OneToOne(mappedBy = "profile", fetch=FetchType.EAGER)
     private Employee user;
     @CreatedDate
     private Date createdAt;
