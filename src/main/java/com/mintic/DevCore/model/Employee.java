@@ -1,12 +1,16 @@
 package com.mintic.DevCore.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mintic.DevCore.enums.Enum_RoleName;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
 
 @Entity
 @Table(name = "employee")
@@ -17,18 +21,23 @@ public class Employee {
     private long id;
     @Column(unique=true)
     private String email;
-    @OneToOne(cascade = {CascadeType.ALL})
+    @JsonBackReference(value="profile-employee")
+    @OneToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "profile_id")
     private Profile profile;
     @Enumerated(EnumType.STRING)
     private Enum_RoleName role;
+    @JsonBackReference(value="enterprise-employee")
     @ManyToOne
     @JoinColumn(name="enterprise_id")
     private Enterprise enterprise;
+    @JsonManagedReference(value = "employee-transaction")
     @OneToMany(mappedBy = "users")
     private List<Transaction> transactions;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @CreatedDate
     private Date createdAt;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @LastModifiedDate
     private Date updateAt;
 

@@ -1,5 +1,6 @@
 package com.mintic.DevCore.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -19,9 +20,11 @@ public class Enterprise {
 	private String document;
 	private String phone;
 	private String address;
-	@OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL)
+	@JsonManagedReference(value = "enterprise-employee")
+	@OneToMany(mappedBy = "enterprise")
 	private List<Employee> users;
-	@OneToMany(mappedBy = "enterprise" , cascade = CascadeType.ALL)
+	@JsonManagedReference(value = "enterprise-transaction")
+	@OneToMany(mappedBy = "enterprise")
 	private List<Transaction> transactions;
 	@CreatedDate
 	private Date createdAt;
