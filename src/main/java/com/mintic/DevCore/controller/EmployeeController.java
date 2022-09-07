@@ -51,7 +51,6 @@ public class EmployeeController {
     @DeleteMapping("/employee/{id}")
     private boolean deleteEmployee(@PathVariable Long id){
         service.delete(id);
-
         return true;
     }
 

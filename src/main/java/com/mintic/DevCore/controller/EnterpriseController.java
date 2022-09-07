@@ -1,4 +1,5 @@
-package com.mintic.DevCore.controller;
+/*
+
 import com.tools.springBoot.project.interfaceService.IpersonaService;
 import com.tools.springBoot.project.modelo.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-<<<<<<< HEAD
+*/
+//<<<<<<< HEAD
+package com.mintic.DevCore.controller;
 import com.mintic.DevCore.interfaces.IEnterprise;
 import com.mintic.DevCore.model.Enterprise;
 import net.bytebuddy.asm.Advice;
@@ -21,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/enterprises")
@@ -56,8 +57,7 @@ public class EnterpriseController {
     }
 
     //Met para eliminar una empresa
-    @DeleteMapping(value="{productId}")
-
+    @DeleteMapping(value="{EnterpriseId}")
     public ResponseEntity<Void> deleteEnterprise(@PathVariable("EnterpriseId") Long productId){
         iEnterprise.deleteById(productId);
         return ResponseEntity.ok(null);
@@ -76,6 +76,7 @@ public class EnterpriseController {
             return ResponseEntity.notFound().build();
     }
 }
+/*
 =======
 import java.util.List;
 import java.util.Optional;
@@ -122,3 +123,4 @@ public class EnterpriseController{
     }
 }
 >>>>>>> 3a31c43040b9ae33422a794024bdbcb15df67395
+*/
