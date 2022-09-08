@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ITransactionService {
 
@@ -17,9 +18,10 @@ public interface ITransactionService {
     @PostMapping("/save-transaction")
     ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction);
 
+    @PatchMapping("/update-transaction/{id}")
+    ResponseEntity<Transaction> updateTransaction(@PathVariable Long id, @RequestBody Map<Object, Object> fields);
+
     @DeleteMapping("/delete-transaction/{id}")
     ResponseEntity<Void> deleteTransaction(@PathVariable("id") Long id);
 
-    @PatchMapping("/update-transaction/{id}")
-    ResponseEntity<Transaction> updateTransaction(@PathVariable("id") Long id, @RequestBody Transaction transaction);
 }

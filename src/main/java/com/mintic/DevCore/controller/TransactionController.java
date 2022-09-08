@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/transactions")
@@ -33,8 +34,8 @@ public class TransactionController implements ITransactionService {
     }
 
     @Override
-    public ResponseEntity<Transaction> updateTransaction(Long id, Transaction transaction) {
-        return request.updateTransaction(id, transaction);
+    public ResponseEntity<Transaction> updateTransaction(Long id, Map<Object, Object> fields) {
+        return request.updateTransaction(id, fields);
     }
 
     @Override

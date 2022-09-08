@@ -5,9 +5,12 @@ import com.mintic.DevCore.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -57,16 +60,21 @@ public class TransactionService {
 
     /*
      * Método para actualizar una transacción.
-     * Validamos la transacción que exista, luego vamos a setear los campos
-     * de dicha transacción.
+     * Validamos que exista la transacción, luego recorremos todos los campos
+     * que está seteando el usuario y a cada uno de esos campos le seteamos el valor
+     * correspondiente, sin afectar los campos que no se necesiten actualizar.
      */
-    public ResponseEntity<Transaction> updateTransaction(Long id, Transaction transaction) {
-        Optional<Transaction> rqsTransaction = repository.findById(id);
-        if (rqsTransaction.isPresent()) {
-            Transaction updateTransaction = rqsTransaction.get();
-            updateTransaction.setAmount(transaction.getAmount());
-            updateTransaction.setConcept(transaction.getConcept());
-            updateTransaction.setUpdateAt(transaction.getUpdateAt());
+
+    public ResponseEntity<Transaction> updateTransaction(Long id, Map<Object, Object> fields) {
+        Optional<Transaction> transaction = repository.findById(id);
+        if (transaction.isPresent()) {
+            Transaction updateTransaction = transaction.get();
+            fields.forEach((key, value) -> {
+                // use reflection to get field k on Transaction and set it to value v
+                Field field = ReflectionUtils.findField(Transaction.class, (String) key);
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, updateTransaction, value);
+            });
             repository.save(updateTransaction);
             return ResponseEntity.ok(updateTransaction);
         } else {
