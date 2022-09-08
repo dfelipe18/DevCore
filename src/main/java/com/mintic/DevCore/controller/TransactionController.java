@@ -31,4 +31,14 @@ public class TransactionController implements ITransactionService {
     public ResponseEntity<Transaction> createTransaction(Transaction transaction) {
         return request.saveTransaction(transaction);
     }
+
+    @Override
+    public ResponseEntity<Transaction> updateTransaction(Long id, Transaction transaction) {
+        return request.updateTransaction(id, transaction);
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteTransaction(Long id) {
+        return request.deleteTransaction(id);
+    }
 }
