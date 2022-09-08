@@ -2,8 +2,8 @@ package com.mintic.DevCore.model;
 
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,9 +26,9 @@ public class Transaction {
     @JoinColumn(name="enterprise_id")
     @JsonBackReference(value = "enterprise-transaction")
     private Enterprise enterprise;
-    @CreatedDate
+    @CreationTimestamp
     private Date createdAt;
-    @LastModifiedDate
+    @UpdateTimestamp
     private Date updateAt;
 
 }

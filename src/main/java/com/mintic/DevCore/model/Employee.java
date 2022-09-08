@@ -3,9 +3,8 @@ package com.mintic.DevCore.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mintic.DevCore.enums.Enum_RoleName;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -34,11 +33,9 @@ public class Employee {
     @JsonManagedReference(value = "employee-transaction")
     @OneToMany(mappedBy = "users")
     private List<Transaction> transactions;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @CreatedDate
+    @CreationTimestamp
     private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @LastModifiedDate
+    @UpdateTimestamp
     private Date updateAt;
 
     public Employee() {

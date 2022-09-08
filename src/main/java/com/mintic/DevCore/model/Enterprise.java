@@ -1,8 +1,8 @@
 package com.mintic.DevCore.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,9 +26,9 @@ public class Enterprise {
 	@JsonManagedReference(value = "enterprise-transaction")
 	@OneToMany(mappedBy = "enterprise")
 	private List<Transaction> transactions;
-	@CreatedDate
+	@CreationTimestamp
 	private Date createdAt;
-	@LastModifiedDate
+	@UpdateTimestamp
 	private Date updateAt;
 
 	public Enterprise() {
