@@ -17,7 +17,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String concept;
-    private float amount;
+    private Double amount;
     @ManyToOne
     @JoinColumn(name="user_id")
     @JsonBackReference(value = "employee-transaction")

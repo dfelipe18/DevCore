@@ -1,12 +1,14 @@
 package com.mintic.DevCore.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "profile")
 public class Profile {
@@ -24,62 +26,4 @@ public class Profile {
     @UpdateTimestamp
     private Date updateAt;
 
-    public Profile(){}
-
-    public Profile(long id, String image, String phone, Employee user, Date createdAt, Date updateAt) {
-        this.id = id;
-        this.image = image;
-        this.phone = phone;
-        this.user = user;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Employee getUser() {
-        return user;
-    }
-
-    public void setUser(Employee user) {
-        this.user = user;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
 }
