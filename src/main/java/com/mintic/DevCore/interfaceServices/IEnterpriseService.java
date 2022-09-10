@@ -9,14 +9,14 @@ import java.util.Map;
 
 public interface IEnterpriseService {
 
-    @GetMapping("/get-all-enterprise")
+    @GetMapping("/get-all-enterprises")
     List<Enterprise> getAllEnterprises();
 
     @GetMapping("/get-enterprise/{id}")
     ResponseEntity<Enterprise> getEnterpriseById(@PathVariable Long id);
 
     @PostMapping("/save-enterprise")
-    ResponseEntity<Enterprise> createEnterprise(@RequestBody Enterprise transaction);
+    ResponseEntity<Enterprise> saveEnterprise(@RequestBody Enterprise transaction);
 
     @PatchMapping("/update-enterprise/{id}")
     ResponseEntity<Enterprise> updateEnterprise(@PathVariable Long id, @RequestBody Map<Object, Object> fields);
