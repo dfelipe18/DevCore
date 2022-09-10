@@ -2,11 +2,17 @@ package com.mintic.DevCore.services;
 
 import com.mintic.DevCore.interfaces.IEmployee;
 import com.mintic.DevCore.model.Employee;
+import com.mintic.DevCore.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -14,19 +20,55 @@ public class EmployeeService {
     @Autowired
     public IEmployee repository;
 
-    public List<Employee> listAll(){
+    public List<Employee> listAllEmployees(){
         List<Employee> employees = new ArrayList<>();
-
-        repository.findAll().forEach(employee -> employees.add(employee));
-
+        employees.addAll(repository.findAll());
         return employees;
     }
 
-    public Employee get(long id){
-        return repository.findById(id).get();
+    public ResponseEntity<Employee> listEmployeeById(long id){
+        Optional<Employee> employee = repository.findById(id);
+        if(employee.isPresent()){
+            return ResponseEntity.ok(employee.get());
+        }else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
-    public void save(Employee employee) {repository.save(employee);}
+    public ResponseEntity<Employee> saveEmployee(Employee employee) {
+        if(!employee.equals(null)){
+            repository.save(employee);
+            return ResponseEntity.ok(employee);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
+    }
 
-    public void delete(long id){repository.deleteById(id);}
+    public ResponseEntity<Employee> updateEmployee(Long id, Map<Object, Object> fields) {
+        Optional<Employee> employee = repository.findById(id);
+
+        if(employee.isPresent()){
+            Employee updateEmployee = employee.get();
+            fields.forEach((key, value) -> {
+                Field field = ReflectionUtils.findField(Employee.class,(String) key);
+                field.setAccessible(true);
+
+                ReflectionUtils.setField(field, updateEmployee, value);
+            });
+            repository.save(updateEmployee);
+            return ResponseEntity.ok(updateEmployee);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+    public ResponseEntity<Void> deleteEmployee(long id){
+        Optional<Employee> employee = repository.findById(id);
+
+        if(employee.isPresent()){
+            repository.deleteById(id);
+        }
+
+        return ResponseEntity.ok(null);
+    }
 }
