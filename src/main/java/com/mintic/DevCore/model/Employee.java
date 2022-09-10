@@ -28,6 +28,10 @@ public class Employee {
     private Profile profile;
     @Enumerated(EnumType.STRING)
     private Enum_RoleName role;
+    @Column(unique = true)
+    private String nombre;
+    @Column(unique = true)
+    private String documento;
     @JsonBackReference(value="enterprise-employee")
     @ManyToOne
     @JoinColumn(name="enterprise_id")
