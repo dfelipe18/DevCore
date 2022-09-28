@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{fragments/head-file :: head-file}"></head>
 <body>
 <div th:replace="~{fragments/login-side :: login-side}"></div>
   <div>
     <h1>Welcome to the login page</h1>
       <div class="container-form">
-          <form th:action="@{/auth/login-post}" method="POST" id="login-form" role="form">
-              <div class="mb-3">
-                  <label for="email-group" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="email-group" aria-describedby="emailHelp" name="email">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <div th:if="${param.error}" >Credenciales incorrectas.</div>
+          <form id="loginform" class="form-signin" method="POST" th:action="@{/auth/login-post}" role="form">
+              <h2 class="form-signin-heading">Please sign in</h2>
+              <p>
+                  <label for="username" class="sr-only">Username Diaz</label>
+                  <input type="text" id="username" name="email" class="form-control" placeholder="Username" required="" autofocus="">
+              </p>
+              <p>
+                  <label for="password" class="sr-only">Password Diaz</label>
+                  <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+              </p>
+              <div class="row form-group">
+                  <input type="submit" class="btn btn-success" value="Continuar"/>
+
               </div>
-              <div class="mb-3">
-                  <label for="password-group" class="form-label" name="password">Contraseña:</label>
-                  <input type="password" class="form-control" id="password-group" name="password">
-              </div>
-              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
           </form>
       </div>
   </div>
