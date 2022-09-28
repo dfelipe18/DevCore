@@ -5,18 +5,19 @@
     <title>Title</title>
 </head>
 <body>
+<div th:replace="~{fragments/login-side :: login-side}"></div>
   <div>
     <h1>Welcome to the login page</h1>
       <div class="container-form">
           <form th:action="@{/auth/login-post}" method="POST" id="login-form" role="form">
               <div class="mb-3">
-                  <label for="email-group" class="form-label" name="username">Email:</label>
-                  <input type="email" class="form-control" id="email-group" aria-describedby="emailHelp">
+                  <label for="email-group" class="form-label">Email:</label>
+                  <input type="email" class="form-control" id="email-group" aria-describedby="emailHelp" name="email">
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
               <div class="mb-3">
                   <label for="password-group" class="form-label" name="password">Contraseña:</label>
-                  <input type="password" class="form-control" id="password-group">
+                  <input type="password" class="form-control" id="password-group" name="password">
               </div>
               <button type="submit" class="btn btn-primary">Iniciar sesión</button>
           </form>

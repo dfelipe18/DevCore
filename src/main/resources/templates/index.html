@@ -1,34 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>DEV CORE</title>
-	<meta content="" name="description">
-	<meta content="" name="keywords">
-	<link href="assets/img/favicon.png" rel="icon">
-	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link th:href="@{assets/vendor/aos/aos.css}" rel="stylesheet">
-	<link th:href="@{assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
-	<link th:href="@{assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
-	<link th:href="@{assets/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
-	<link th:href="@{assets/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
-	<link th:href="@{assets/css/style.css}" rel="stylesheet">
-</head>
+<head th:replace="~{fragments/head-file :: head-file}"></head>
 <body>
 <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-<header id="header" class="d-flex flex-column justify-content-center">
-	<nav id="navbar" class="navbar nav-menu">
-		<ul>
-			<li><a th:href="@{/users}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Users</span></a></li>
-			<li><a th:href="@{/register}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Register</span></a></li>
-			<li><a th:href="@{/login}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Login</span></a></li>
-		</ul>
-	</nav>
-
-</header>
+<div th:replace="~{fragments/login-side :: login-side}"></div>
 <section id="hero" class="d-flex flex-column justify-content-center">
 	<div class="container" data-aos="zoom-in" data-aos-delay="100">
 		<h1>DEVCORE</h1>
