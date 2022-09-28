@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head-file :: head-file}"></head>
+<body>
+<i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+<div th:replace="~{fragments/login-side :: login-side}"></div>
+
+<div class="container">
+  <h3>Gracias por su visita</h3>
+  <a th:href="@{/}" class="btn btn-primary mt-3">Inicio</a>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/scripts :: scripts-contents}"></div>
+<th:block layout:replace="~{fragments/scripts :: scripts}"/>
+</body>
+</html>

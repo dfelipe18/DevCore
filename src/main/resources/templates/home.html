@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{fragments/head-file :: head-file}"></head>
 <body>
-  <div class="container container-general">
-    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
-    <div class="container-content">
-      <div th:replace="~{fragments/navbar :: navbar}"></div>
-      <div class="container-dynamic">
-          <p>putos todos</p>
+
+  <div class="container-general">
+    <div class="container-navbar">
+      <header th:replace="~{fragments/navbar :: navbar}"></header>
+    </div>
+    <div class="container-elements">
+      <div class="container-aside">
+        <aside th:replace="~{fragments/aside :: aside}"></aside>
       </div>
-      <div th:replace="~{fragments/footer :: footer}"></div>
+      <div class="container-content-views"></div>
+    </div>
+    <div class="container-footer">
+      <footer th:replace="~{fragments/footer :: footer}"></footer>
     </div>
   </div>
+  <div th:replace="~{fragments/scripts :: scripts-contents}"></div>
+  <th:block layout:replace="~{fragments/scripts :: scripts}"/>
+
 </body>
 </html>

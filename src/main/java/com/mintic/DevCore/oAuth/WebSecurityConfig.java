@@ -46,30 +46,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		/*http.authorizeRequests()
-				.antMatchers("/users").authenticated()
-				.anyRequest().permitAll()
-				.and()
-				.formLogin()
-				.usernameParameter("email")
-				.defaultSuccessUrl("/users")
-				.permitAll()
-				.and()
-				.logout().logoutSuccessUrl("/").permitAll();
-		*/
 		http.authorizeRequests()
-				.antMatchers("/users", "/home").authenticated()
-				.anyRequest().permitAll()
+				.antMatchers("/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**", "/", "/index").permitAll()
+				.antMatchers("/users", "/home").authenticated().anyRequest().permitAll()
 				.and()
 				.formLogin()
 				.usernameParameter("email")
 				.passwordParameter("password")
-				.loginPage("/auth/login")
-				.defaultSuccessUrl("/access/home", true)
-				.failureUrl("/auth/login?error=true")
-				.loginProcessingUrl("/auth/login-post").permitAll()
+				.loginPage("/login")
+				.defaultSuccessUrl("/home", true)
+				.failureUrl("/login?error=true")
+				.loginProcessingUrl("/login-post").permitAll()
 				.and()
-				.logout().logoutSuccessUrl("/").permitAll();
+				.logout().logoutUrl("/logout").logoutSuccessUrl("/");
 	}
 	
 	
