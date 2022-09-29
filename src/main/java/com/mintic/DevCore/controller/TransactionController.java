@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/transactions")
@@ -24,7 +25,7 @@ public class TransactionController implements ITransactionService {
     }
 
     @Override
-    public ResponseEntity<Transaction> getTransactionById(Long id) {
+    public Optional<Transaction> getTransactionById(Long id) {
         return request.listTransactionById(id);
     }
 

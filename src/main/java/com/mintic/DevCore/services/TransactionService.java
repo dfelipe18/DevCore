@@ -35,13 +35,9 @@ public class TransactionService {
     * la transacción por su ID, luego valdiamos si está presente en la consulta
     * y por último retornamos el objeto encontrado.
     */
-    public ResponseEntity<Transaction> listTransactionById(long id) {
+    public Optional<Transaction> listTransactionById(long id) {
         Optional<Transaction> transaction = repository.findById(id);
-        if(transaction.isPresent()) {
-            return ResponseEntity.ok(transaction.get());
-        } else {
-            return ResponseEntity.noContent().build();
-        }
+        return transaction;
     }
 
     /*

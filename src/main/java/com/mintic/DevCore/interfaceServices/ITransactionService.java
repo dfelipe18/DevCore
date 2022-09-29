@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface ITransactionService {
 
@@ -13,7 +14,7 @@ public interface ITransactionService {
     List<Transaction> getAllTransactions();
 
     @GetMapping("/get-transaction/{id}")
-    ResponseEntity<Transaction> getTransactionById(@PathVariable Long id);
+    Optional<Transaction> getTransactionById(@PathVariable Long id);
 
     @PostMapping("/save-transaction")
     ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction);

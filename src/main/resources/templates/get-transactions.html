@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head-file :: head-file}"></head>
+<body>
+<i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+<div th:replace="~{fragments/nav :: nav}"></div>
+<section id="hero" class="d-flex flex-column justify-content-center">
+  <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
+    <h2 class="text-center">Listado de todas las transacciones:</h2>
+    <div class="container-buttons container h-5">
+      <div class="btn-create">
+        <a class="btn btn-info" th:href="@{/create-transaction}"><i class='bx bx-store-alt mr-2'></i>Generar transacción</a>
+      </div>
+    </div>
+    <div class="container h-75 mt-3 mb-2">
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead class="table-primary">
+        <tr>
+          <th>Id</th>
+          <th>Concepto</th>
+          <th>Monto</th>
+          <th>Empresa</th>
+          <th>Usuario</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaction: ${transactions}">
+          <td th:text="${transaction.id}">Id transacción</td>
+          <td th:text="${transaction.concept}">Concepto</td>
+          <td th:text="${transaction.amount}">Monto</td>
+          <td th:text="${transaction.enterprise}">Empresa</td>
+          <td th:text="${transaction.users}">Usuario</td>
+          <td>
+            <a th:href="@{/update-transaction/{id}(id=${transaction.id})}" class="btn btn-info">Editar</a>
+            <a th:onclick="deleteItem([[${transaction.id}]], '/delete-transaction/', '/get-transactions')" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/scripts :: scripts-contents}"></div>
+<th:block layout:replace="~{fragments/scripts :: scripts}"/>
+</body>
+</html>
