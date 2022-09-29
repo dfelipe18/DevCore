@@ -25,21 +25,8 @@ public class operationEnterpriseController {
         model.addAttribute("enterprises", enterprises);
         return "get-enterprises";
     }
-
     @GetMapping("/create-enterprise")
     public String createEnterprises() {
         return "create-enterprise";
-    }
-    @GetMapping("/get-employee")
-    public String getEmployee(Model model) {
-        List <Employee> employee = employeeRepo.findAll();
-        model.addAttribute("employee", employee);
-        return "/get-employee";
-    }
-    @GetMapping("/get-transaction")
-    public String getTransaction(Model model) {
-        List <Transaction> transaction = transactionRepo.findAll();
-        model.addAttribute("transaction", transaction);
-        return "/get-transaction";
     }
 }
