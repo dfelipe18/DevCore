@@ -23,10 +23,10 @@ public class operationController {
     @Autowired
     private ITransaction transactionRepo;
 
-    @GetMapping("/enterprises")
-    public String getEnterprise(Model model) {
+    @GetMapping("/get-enterprises")
+    public String getEnterprises(Model model) {
         List <Enterprise> enterprises = enterpriseRepo.findAll();
         model.addAttribute("enterprises", enterprises);
-        return "enterprises";
+        return "/get-enterprises";
     }
 }
