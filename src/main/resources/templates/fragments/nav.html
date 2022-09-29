@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<header id="header" class="d-flex flex-column justify-content-center" th:fragment="nav">
+  <nav id="navbar" class="navbar nav-menu">
+    <ul>
+      <li><a th:href="@{/home}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+      <li><a th:href="@{/enterprises}" class="nav-link scrollto"><i class='bx bxs-business'></i> <span>Empresas</span></a></li>
+      <li><a th:href="@{/employees}" class="nav-link scrollto"><i class='bx bxs-user-detail'></i> <span>Empleados</span></a></li>
+      <li><a th:href="@{/transaction}" class="nav-link scrollto"><i class='bx bx-money'></i> <span>Movimientos</span></a></li>
+      <li><a th:href="@{/logout}" class="nav-link scrollto"><i class='bx bx-log-out-circle'></i> <span>salir</span></a></li>
+    </ul>
+  </nav>
+</header>
+</body>
+</html>
