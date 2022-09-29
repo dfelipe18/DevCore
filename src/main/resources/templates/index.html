@@ -4,6 +4,7 @@
 <body>
 <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
 <div th:replace="~{fragments/login-side :: login-side}"></div>
+<main>
 <section id="hero" class="d-flex flex-column justify-content-center">
 	<div class="container" data-aos="zoom-in" data-aos-delay="100">
 		<h1>DEVCORE</h1>
@@ -17,6 +18,7 @@
 		</div>
 	</div>
 </section>
+</main>
 <footer th:replace="~{fragments/footer :: footer}"></footer>
 <div th:replace="~{fragments/scripts :: scripts-contents}"></div>
 <th:block layout:replace="~{fragments/scripts :: scripts}"/>
