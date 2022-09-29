@@ -14,22 +14,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class operationController {
+public class operationEnterpriseController {
 
     @Autowired
-    private IEnterprise enterpriseRepo;
-
-    @Autowired
-    private IEmployee employeeRepo;
-
-    @Autowired
-    private ITransaction transactionRepo;
+    private EnterpriseController enterpriseRepo;
 
     @GetMapping("/get-enterprises")
     public String getEnterprises(Model model) {
-        List <Enterprise> enterprises = enterpriseRepo.findAll();
+        List <Enterprise> enterprises = enterpriseRepo.getAllEnterprises();
         model.addAttribute("enterprises", enterprises);
-        return "/get-enterprises";
+        return "get-enterprises";
+    }
+
+    @GetMapping("/create-enterprise")
+    public String createEnterprises() {
+        return "create-enterprise";
     }
     @GetMapping("/get-employee")
     public String getEmployee(Model model) {
