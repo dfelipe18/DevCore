@@ -32,8 +32,10 @@
           <td th:text="${transaction.enterprise}">Empresa</td>
           <td th:text="${transaction.users}">Usuario</td>
           <td>
-            <a th:href="@{/update-transaction/{id}(id=${transaction.id})}" class="btn btn-info">Editar</a>
-            <a th:onclick="deleteItem([[${transaction.id}]], '/delete-transaction/', '/get-transactions')" class="btn btn-danger">Eliminar</a>
+            <a th:href="@{/update-transaction/{id}(id=${transaction.id})}" class="btn btn-info"><i
+                    class='bx bxs-edit-alt bx-md bx-tada'></i></a>
+            <a th:onclick="deleteItem([[${transaction.id}]], '/delete-transaction/', '/get-transaction')" class="btn btn-danger"><i
+                    class='bx bxs-trash bx-md bx-tada'></i></a>
           </td>
         </tr>
         </tbody>

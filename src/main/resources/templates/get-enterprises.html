@@ -32,8 +32,10 @@
                     <td th:text="${enterprise.address}">Dirección</td>
                     <td th:text="${enterprise.phone}">Teléfono</td>
                     <td>
-                        <a th:href="@{/update-enterprise/{id}(id=${enterprise.id})}" class="btn btn-info">Editar</a>
-                        <a th:onclick="deleteItem([[${enterprise.id}]], '/delete-enterprise/', '/get-enterprises')" class="btn btn-danger">Eliminar</a>
+                        <a th:href="@{/update-enterprise/{id}(id=${enterprise.id})}" class="btn btn-info"><i
+                                class='bx bxs-edit-alt bx-md bx-tada'></i></a>
+                        <a th:onclick="deleteItem([[${enterprise.id}]], '/delete-enterprise/', '/get-enterprises')" class="btn btn-danger"><i
+                                class='bx bxs-trash bx-md bx-tada'></i></a>
                     </td>
                 </tr>
                 </tbody>
