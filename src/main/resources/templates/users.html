@@ -5,11 +5,7 @@
 <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
 <header id="header" class="d-flex flex-column justify-content-center">
 	<nav id="navbar" class="navbar nav-menu">
-		<form th:action="@{/logout}" method="POST">
-			<ul>
-				<li><a class="nav-link scrollto"><i class="bx bx-file-blank"></i> <button type="submit">Logout</button></a></li>
-			</ul>
-		</form>
+		<li><a th:href="@{/logout}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>salir</span></a></li>
 	</nav>
 
 </header>

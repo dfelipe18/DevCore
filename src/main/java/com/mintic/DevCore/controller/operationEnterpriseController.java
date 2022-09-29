@@ -12,21 +12,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class operationController {
+public class operationEnterpriseController {
 
     @Autowired
-    private IEnterprise enterpriseRepo;
+    private EnterpriseController enterpriseRepo;
 
-    @Autowired
-    private IEmployee employeeRepo;
-
-    @Autowired
-    private ITransaction transactionRepo;
-
-    @GetMapping("/enterprises")
-    public String getEnterprise(Model model) {
-        List <Enterprise> enterprises = enterpriseRepo.findAll();
+    @GetMapping("/get-enterprises")
+    public String getEnterprises(Model model) {
+        List <Enterprise> enterprises = enterpriseRepo.getAllEnterprises();
         model.addAttribute("enterprises", enterprises);
-        return "enterprises";
+        return "get-enterprises";
+    }
+
+    @GetMapping("/create-enterprise")
+    public String createEnterprises() {
+        return "create-enterprise";
     }
 }
