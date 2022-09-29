@@ -26,13 +26,9 @@ public class EmployeeService {
         return employees;
     }
 
-    public ResponseEntity<Employee> listEmployeeById(long id){
+    public Optional<Employee>  listEmployeeById(long id){
         Optional<Employee> employee = repository.findById(id);
-        if(employee.isPresent()){
-            return ResponseEntity.ok(employee.get());
-        }else {
-            return ResponseEntity.noContent().build();
-        }
+        return employee;
     }
 
     public ResponseEntity<Employee> saveEmployee(Employee employee) {

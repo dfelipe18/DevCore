@@ -7,9 +7,9 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
-	private User user;
+	private Employee user;
 	
-	public CustomUserDetails(User user) {
+	public CustomUserDetails(Employee user) {
 		this.user = user;
 	}
 

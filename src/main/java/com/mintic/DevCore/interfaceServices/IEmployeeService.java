@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface IEmployeeService {
 
@@ -13,7 +14,7 @@ public interface IEmployeeService {
     List<Employee> getAllEmployees();
 
     @GetMapping("/get-employee/{id}")
-    ResponseEntity<Employee> getEmployeeById(@PathVariable Long id);
+    Optional<Employee> getEmployeeById(@PathVariable Long id);
 
     @PostMapping("/save-employee")
     ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee);

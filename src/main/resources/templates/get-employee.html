@@ -17,18 +17,27 @@
             <table id="example" class="table table-striped" style="width:100%">
                 <thead class="table-primary">
                 <tr>
+                    <th>Id</th>
+                    <th>Nombres</th>
                     <th>Email</th>
-                    <th>Nombre</th>
-                    <th>documento</th>
+                    <th>Documento</th>
                     <th>Empresa</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee: ${employees}">
-                    <td th:text="${employee.email}">Email</td>
-                    <td th:text="${employee.nombre}">Nombre</td>
-                    <td th:text="${employee.documento}">documento</td>
+                    <td th:text="${employee.id}">Id</td>
+                    <td th:text="${employee.firstName} + ' ' + ${employee.lastName}">Nombres</td>
+                    <td th:text="${employee.Email}">Email</td>
+                    <td th:text="${employee.document}">Documento</td>
                     <td th:text="${employee.enterprise}">Empresa</td>
+                    <td th:text="${employee.role}">Rol</td>
+                    <td>
+                        <a th:href="@{/update-employee/{id}(id=${employee.id})}" class="btn btn-info">Editar</a>
+                        <a th:onclick="deleteItem([[${employee.id}]], '/delete-employee/', '/get-employee')" class="btn btn-danger">Eliminar</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

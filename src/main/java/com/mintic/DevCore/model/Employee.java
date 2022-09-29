@@ -20,18 +20,22 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(unique=true)
+    @Column(unique=true, length = 45)
     private String email;
+    @Column(length = 64)
+    private String password;
     @JsonBackReference(value="profile-employee")
     @OneToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "profile_id")
     private Profile profile;
     @Enumerated(EnumType.STRING)
     private Enum_RoleName role;
+    @Column(name = "first_name", length = 20)
+    private String firstName;
+    @Column(name = "last_name", length = 20)
+    private String lastName;
     @Column(unique = true)
-    private String nombre;
-    @Column(unique = true)
-    private String documento;
+    private String document;
     @JsonBackReference(value="enterprise-employee")
     @ManyToOne
     @JoinColumn(name="enterprise_id")

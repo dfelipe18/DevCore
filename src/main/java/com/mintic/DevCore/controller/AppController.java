@@ -1,7 +1,7 @@
 package com.mintic.DevCore.controller;
 
-import com.mintic.DevCore.interfaces.UserRepository;
-import com.mintic.DevCore.model.User;
+import com.mintic.DevCore.interfaces.IEmployee;
+import com.mintic.DevCore.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 public class AppController {
 
 	@Autowired
-	private UserRepository userRepo;
+	private IEmployee userRepo;
 	
 	@GetMapping("")
 	public String viewHomePage() {
@@ -27,12 +26,12 @@ public class AppController {
 	
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("user", new Employee());
 		return "signup_form";
 	}
 	
 	@PostMapping("/process_register")
-	public String processRegister(User user) {
+	public String processRegister(Employee user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
@@ -44,7 +43,7 @@ public class AppController {
 	
 	@GetMapping("/users")
 	public String listUsers(Model model) {
-		List<User> listUsers = userRepo.findAll();
+		List<Employee> listUsers = userRepo.findAll();
 		model.addAttribute("listUsers", listUsers);
 		
 		return "users";
@@ -54,7 +53,7 @@ public class AppController {
 	public String home(Authentication auth, HttpSession session) {
 		String username = auth.getName();
 		if (session.getAttribute("usuario") == null) {
-			User user = userRepo.findByEmail(username);
+			Employee user = userRepo.findByEmail(username);
 			user.setPassword(null);
 			session.setAttribute("usuario", user);
 		}
@@ -63,7 +62,7 @@ public class AppController {
 
 	@GetMapping("/login")
 	public String login(Model model) {
-		model.addAttribute("usuario", new User());
+		model.addAttribute("usuario", new Employee());
 		return "login";
 	}
 

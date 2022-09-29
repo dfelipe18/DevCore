@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
@@ -22,7 +23,7 @@ public class EmployeeController implements IEmployeeService {
     {return service.listAllEmployees();}
 
     @Override
-    public ResponseEntity<Employee> getEmployeeById(Long id){
+    public Optional<Employee> getEmployeeById(Long id){
         return service.listEmployeeById(id);
     }
     @Override
