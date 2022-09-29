@@ -35,8 +35,10 @@
                     <td th:text="${employee.enterprise}">Empresa</td>
                     <td th:text="${employee.role}">Rol</td>
                     <td class="text-center">
-                        <a th:href="@{/update-employee/{id}(id=${employee.id})}" class="btn btn-info">Editar</a>
-                        <a th:onclick="deleteItem([[${employee.id}]], '/delete-employee/', '/get-employee')" class="btn btn-danger">Eliminar</a>
+                        <a th:href="@{/update-employee/{id}(id=${employee.id})}" class="btn btn-info"><i
+                                class='bx bxs-edit-alt bx-sm bx-tada'></i></a>
+                        <a th:onclick="deleteItem([[${employee.id}]], '/delete-employee/', '/get-employee')" class="btn btn-danger"><i
+                                class='bx bxs-trash bx-sm bx-tada'></i></a>
                     </td>
                 </tr>
                 </tbody>
