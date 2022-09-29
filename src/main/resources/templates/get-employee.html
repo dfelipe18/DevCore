@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head-file :: head-file}"></head>
+<body>
+<i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+<div th:replace="~{fragments/nav :: nav}"></div>
+<section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
+        <h3 class="text-center">Listado de todas los empleados:</h3>
+        <div class="container">
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead class="table-primary">
+                <tr>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>documento</th>
+                    <th>Empresa</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee: ${employee}">
+                    <td th:text="${employee.email}">Email</td>
+                    <td th:text="${employee.nombre}">Nombre</td>
+                    <td th:text="${employee.documento}">documento</td>
+                    <td th:text="${employee.enterprise}">Empresa</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/scripts :: scripts-contents}"></div>
+<th:block layout:replace="~{fragments/scripts :: scripts}"/>
+</body>
+</html>
