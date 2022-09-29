@@ -48,9 +48,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		String [] permitted = new String[] {
+			"/assets/**", "/static/**", "/css/**", "/js/**",
+			"/img/**", "/scss/**", "/vendor/**", "/", "/index"
+		};
 		http.authorizeRequests()
-				.antMatchers("/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**", "/", "/index").permitAll()
-				.antMatchers("/users", "/home", "/enterprises/**").authenticated().anyRequest().permitAll()
+				.antMatchers(permitted).permitAll()
+				.antMatchers("/users", "/home", "/static/**").authenticated().anyRequest().permitAll()
 				.and()
 				.formLogin()
 				.usernameParameter("email")
@@ -60,7 +64,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.failureUrl("/login?error=true")
 				.loginProcessingUrl("/login-post").permitAll()
 				.and()
-				.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+				.logout().logoutUrl("/logout").logoutSuccessUrl("/")
+				.and()
+				.csrf().disable();
 	}
 
 }

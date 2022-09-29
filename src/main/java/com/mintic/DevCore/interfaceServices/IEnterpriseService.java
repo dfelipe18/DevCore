@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface IEnterpriseService {
 
@@ -13,7 +14,7 @@ public interface IEnterpriseService {
     List<Enterprise> getAllEnterprises();
 
     @GetMapping("/get-enterprise/{id}")
-    ResponseEntity<Enterprise> getEnterpriseById(@PathVariable Long id);
+    Optional<Enterprise> getEnterpriseById(@PathVariable Long id);
 
     @PostMapping("/save-enterprise")
     ResponseEntity<Enterprise> saveEnterprise(@RequestBody Enterprise transaction);

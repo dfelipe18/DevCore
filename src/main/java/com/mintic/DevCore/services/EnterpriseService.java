@@ -35,13 +35,9 @@ public class EnterpriseService {
      * la Empresa por su ID, luego valdiamos si está presente en la consulta
      * y por último retornamos el objeto encontrado.
      */
-    public ResponseEntity<Enterprise> listEnterpriseById(long id) {
+    public Optional<Enterprise> listEnterpriseById(long id) {
         Optional<Enterprise> Enterprise = repository.findById(id);
-        if(Enterprise.isPresent()) {
-            return ResponseEntity.ok(Enterprise.get());
-        } else {
-            return ResponseEntity.noContent().build();
-        }
+        return Enterprise;
     }
 
     /*

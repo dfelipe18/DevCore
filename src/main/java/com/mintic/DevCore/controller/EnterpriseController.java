@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/enterprise")
@@ -22,7 +23,7 @@ public class EnterpriseController implements IEnterpriseService {
     {return service.listAllEnterprises();}
 
     @Override
-    public ResponseEntity<Enterprise> getEnterpriseById(Long id){
+    public Optional<Enterprise> getEnterpriseById(Long id){
         return service.listEnterpriseById(id);
     }
 

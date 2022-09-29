@@ -7,7 +7,7 @@
 <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
         <h2 class="text-center">Listado de todas las empresas:</h2>
-        <div class="container-buttons container h-25">
+        <div class="container-buttons container">
             <div class="btn-create">
                 <a class="btn btn-info" th:href="@{/create-enterprise}"><i class='bx bx-store-alt mr-2'></i>Crear Empresas</a>
             </div>
@@ -21,6 +21,7 @@
                     <th>NIT</th>
                     <th>Dirección</th>
                     <th>Teléfono</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,10 @@
                     <td th:text="${enterprise.document}">NIT</td>
                     <td th:text="${enterprise.address}">Dirección</td>
                     <td th:text="${enterprise.phone}">Teléfono</td>
+                    <td>
+                        <a th:href="@{/update-enterprise/{id}(id=${enterprise.id})}" class="btn btn-info">Editar</a>
+                        <a th:onclick="deleteItem([[${enterprise.id}]], '/delete-enterprise/', '/get-enterprises')" class="btn btn-danger">Eliminar</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
