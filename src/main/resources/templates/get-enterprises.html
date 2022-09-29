@@ -7,6 +7,11 @@
 <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
         <h2 class="text-center">Listado de todas las empresas:</h2>
+        <div class="container-buttons container h-25">
+            <div class="btn-create">
+                <a class="btn btn-info" th:href="@{/create-enterprise}"><i class='bx bx-store-alt mr-2'></i>Crear Empresas</a>
+            </div>
+        </div>
         <div class="container h-75 mt-3 mb-2">
             <table id="example" class="table table-striped" style="width:100%">
                 <thead class="table-primary">
@@ -28,11 +33,6 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="container-buttons container h-25">
-            <div class="btn-create">
-                <button type="button" class="btn btn-info" th:action="@{/create-enterprise}"><i class='bx bx-store-alt mr-2'></i>Crear Empresas</button>
-            </div>
         </div>
     </div>
 </section>
