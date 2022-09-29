@@ -25,7 +25,7 @@ public class operationEnterpriseController {
     }
 
     @GetMapping("/create-enterprise")
-    public String gcreateEnterprises() {
+    public String createEnterprises() {
         return "create-enterprise";
     }
 }
