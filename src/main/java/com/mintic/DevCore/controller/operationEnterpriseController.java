@@ -1,8 +1,5 @@
 package com.mintic.DevCore.controller;
 
-import com.mintic.DevCore.interfaces.IEmployee;
-import com.mintic.DevCore.interfaces.IEnterprise;
-import com.mintic.DevCore.interfaces.ITransaction;
 import com.mintic.DevCore.model.Enterprise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +25,6 @@ public class operationEnterpriseController {
         model.addAttribute("enterprises", enterprises);
         return "get-enterprises";
     }
-
     @GetMapping("/create-enterprise")
     public String createEnterprises(Model model) {
         model.addAttribute("enterprise", new Enterprise());
