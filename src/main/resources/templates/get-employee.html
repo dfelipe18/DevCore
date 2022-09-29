@@ -17,13 +17,13 @@
             <table id="example" class="table table-striped" style="width:100%">
                 <thead class="table-primary">
                 <tr>
-                    <th>Id</th>
-                    <th>Nombres</th>
-                    <th>Email</th>
-                    <th>Documento</th>
-                    <th>Empresa</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Nombres</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Documento</th>
+                    <th class="text-center">Empresa</th>
+                    <th class="text-center">Rol</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,7 @@
                     <td th:text="${employee.document}">Documento</td>
                     <td th:text="${employee.enterprise}">Empresa</td>
                     <td th:text="${employee.role}">Rol</td>
-                    <td>
+                    <td class="text-center">
                         <a th:href="@{/update-employee/{id}(id=${employee.id})}" class="btn btn-info">Editar</a>
                         <a th:onclick="deleteItem([[${employee.id}]], '/delete-employee/', '/get-employee')" class="btn btn-danger">Eliminar</a>
                     </td>
