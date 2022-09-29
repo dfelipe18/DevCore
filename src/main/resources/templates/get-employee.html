@@ -6,30 +6,29 @@
 <div th:replace="~{fragments/nav :: nav}"></div>
 <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
-        <h2 class="text-center">Listado de todas las empresas:</h2>
-        <div class="container-buttons container h-5">
+        <h3 class="text-center">Listado de todas los empleados:</h3>
+        <div class="container">
             <div class="btn-create">
-                <a class="btn btn-info" th:href="@{/create-enterprise}"><i class='bx bx-store-alt mr-2'></i>Crear Empresas</a>
+                <a class="btn btn-info" th:href="@{/create-employee}"><i class='bx bx-store-alt mr-2'></i>Crear empleado</a>
             </div>
         </div>
-        <div class="container h-75 mt-3 mb-2">
+        <div class="container">
+            <br>
             <table id="example" class="table table-striped" style="width:100%">
                 <thead class="table-primary">
                 <tr>
-                    <th>Id</th>
+                    <th>Email</th>
                     <th>Nombre</th>
-                    <th>NIT</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
+                    <th>documento</th>
+                    <th>Empresa</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="enterprise: ${enterprises}">
-                    <td th:text="${enterprise.id}">ID Empresa</td>
-                    <td th:text="${enterprise.name}">Nombre</td>
-                    <td th:text="${enterprise.document}">NIT</td>
-                    <td th:text="${enterprise.address}">Dirección</td>
-                    <td th:text="${enterprise.phone}">Teléfono</td>
+                <tr th:each="employee: ${employees}">
+                    <td th:text="${employee.email}">Email</td>
+                    <td th:text="${employee.nombre}">Nombre</td>
+                    <td th:text="${employee.documento}">documento</td>
+                    <td th:text="${employee.enterprise}">Empresa</td>
                 </tr>
                 </tbody>
             </table>

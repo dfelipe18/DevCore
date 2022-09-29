@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head-file :: head-file}"></head>
+<body>
+<i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+<div th:replace="~{fragments/nav :: nav}"></div>
+<section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
+        <h2 class="text-center">Crear empleado:</h2>
+        <div class="container h-75 mt-3 mb-2">
+            <form th:action="@{/save-employee}" th:object="${employee}"
+                  method="post">
+                <div class="card border-dark mb-3 col-8">
+                    <div class="card-body text-dark">
+                        <div class="row g-3 needs-validation">
+                            <div class="col-6">
+                                <label>email: </label>
+                                <input type="email" th:field="*{email}" class="form-control" required />
+                            </div>
+                            <div class="col-6">
+                                <label>nombre: </label>
+                                <input type="text" th:field="*{nombre}" class="form-control" required />
+                            </div>
+                            <div class="col-6">
+                                <label>documento: </label>
+                                <input type="text" th:field="*{documento}" class="form-control" required />
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container-buttons container h-25">
+            <div class="btn-create">
+                <a class="btn btn-info" th:href="@{/get-employee}"><i class='bx bx-log-out-circle mr-2'></i>Volver</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/scripts :: scripts-contents}"></div>
+<th:block layout:replace="~{fragments/scripts :: scripts}"/>
+</body>
+</html>
