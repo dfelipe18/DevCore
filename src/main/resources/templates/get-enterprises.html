@@ -16,26 +16,28 @@
             <table id="example" class="table table-striped" style="width:100%">
                 <thead class="table-primary">
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>NIT</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">NIT</th>
+                    <th class="text-center">Dirección</th>
+                    <th class="text-center">Teléfono</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="enterprise: ${enterprises}">
-                    <td th:text="${enterprise.id}">ID Empresa</td>
-                    <td th:text="${enterprise.name}">Nombre</td>
-                    <td th:text="${enterprise.document}">NIT</td>
-                    <td th:text="${enterprise.address}">Dirección</td>
-                    <td th:text="${enterprise.phone}">Teléfono</td>
-                    <td>
+                    <td class="text-center" th:text="${enterprise.id}">ID Empresa</td>
+                    <td class="text-center" th:text="${enterprise.name}">Nombre</td>
+                    <td class="text-center" th:text="${enterprise.document}">NIT</td>
+                    <td class="text-center" th:text="${enterprise.address}">Dirección</td>
+                    <td class="text-center" th:text="${enterprise.phone}">Teléfono</td>
+                    <td class="text-center">
                         <a th:href="@{/update-enterprise/{id}(id=${enterprise.id})}" class="btn btn-info"><i
-                                class='bx bxs-edit-alt bx-sm bx-tada'></i></a>
-                        <a th:onclick="deleteItem([[${enterprise.id}]], '/delete-enterprise/', '/get-enterprises')" class="btn btn-danger"><i
-                                class='bx bxs-trash bx-sm bx-tada'></i></a>
+                                class='bx bxs-edit-alt fs-5'></i></a>
+                        <a th:onclick="deleteItem([[${enterprise.id}]], '/delete-enterprise/', '/get-enterprises')" class="btn btn-danger ml-2 mr-2"><i
+                                class='bx bxs-trash fs-5'></i></a>
+                        <a th:href="@{/see-employees/{id}(id=${enterprise.id}, name=${enterprise.name})}" class="btn btn-info">
+                            <i class='bx bx-user fs-5'></i></a>
                     </td>
                 </tr>
                 </tbody>

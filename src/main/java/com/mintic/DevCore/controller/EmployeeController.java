@@ -41,4 +41,13 @@ public class EmployeeController implements IEmployeeService {
     public ResponseEntity<Void> deleteEmployee( Long id){
         return service.deleteEmployee(id);
     }
+
+    @Override
+    public List<Employee> getEmployeesByEnterprise(long id) throws Exception {
+        try {
+            return service.getEmployeesByEnterprise(id);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

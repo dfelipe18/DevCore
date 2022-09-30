@@ -24,4 +24,7 @@ public interface IEmployeeService {
 
     @DeleteMapping("/delete-employee/{id}")
     ResponseEntity<Void> deleteEmployee(@PathVariable Long id);
+
+    @GetMapping("/get-employees-by-enterprise/{id}")
+    List<Employee> getEmployeesByEnterprise(@PathVariable long id) throws Exception;
 }

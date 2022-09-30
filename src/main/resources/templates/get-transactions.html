@@ -16,26 +16,26 @@
       <table id="example" class="table table-striped" style="width:100%">
         <thead class="table-primary">
         <tr>
-          <th>Id</th>
-          <th>Concepto</th>
-          <th>Monto</th>
-          <th>Empresa</th>
-          <th>Usuario</th>
-          <th>Acciones</th>
+          <th class="text-center">Id</th>
+          <th class="text-center">Concepto</th>
+          <th class="text-center">Monto</th>
+          <th class="text-center">Empresa</th>
+          <th class="text-center">Usuario</th>
+          <th class="text-center">Acciones</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="transaction: ${transactions}">
-          <td th:text="${transaction.id}">Id transacción</td>
-          <td th:text="${transaction.concept}">Concepto</td>
-          <td th:text="${transaction.amount}">Monto</td>
-          <td th:text="${transaction.enterprise}">Empresa</td>
-          <td th:text="${transaction.users}">Usuario</td>
-          <td>
+          <td class="text-center" th:text="${transaction.id}">Id transacción</td>
+          <td class="text-center" th:text="${transaction.concept}">Concepto</td>
+          <td class="text-center" th:text="${transaction.amount}">Monto</td>
+          <td class="text-center" th:text="${transaction.enterprise}">Empresa</td>
+          <td class="text-center" th:text="${transaction.users}">Usuario</td>
+          <td class="text-center">
             <a th:href="@{/update-transaction/{id}(id=${transaction.id})}" class="btn btn-info"><i
-                    class='bx bxs-edit-alt bx-sm bx-tada'></i></a>
+                    class='bx bxs-edit-alt fs-5'></i></a>
             <a th:onclick="deleteItem([[${transaction.id}]], '/delete-transaction/', '/get-transaction')" class="btn btn-danger"><i
-                    class='bx bxs-trash bx-sm bx-tada'></i></a>
+                    class='bx bxs-trash fs-5'></i></a>
           </td>
         </tr>
         </tbody>

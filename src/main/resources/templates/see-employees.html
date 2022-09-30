@@ -6,39 +6,35 @@
 <div th:replace="~{fragments/nav :: nav}"></div>
 <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container h-100" data-aos="zoom-in" data-aos-delay="100">
-        <h3 class="text-center">Listado de todas los empleados:</h3>
-        <div class="container">
+        <h2 class="text-center" th:text="${message}"></h2>
+        <div class="container-buttons container h-5">
             <div class="btn-create">
-                <a class="btn btn-info" th:href="@{/create-employee}"><i class='bx bx-store-alt mr-2'></i>Crear empleado</a>
+                <a class="btn btn-info" th:href="@{/get-enterprises}"><i class='bx bx-log-out-circle mr-2'></i>Volver a empresas</a>
             </div>
         </div>
-        <div class="container">
-            <br>
+        <div class="container h-75 mt-3 mb-2">
             <table id="example" class="table table-striped" style="width:100%">
                 <thead class="table-primary">
                 <tr>
                     <th class="text-center">Id</th>
                     <th class="text-center">Nombres</th>
-                    <th class="text-center">Email</th>
                     <th class="text-center">Documento</th>
-                    <th class="text-center">Empresa</th>
+                    <th class="text-center">Email</th>
                     <th class="text-center">Rol</th>
-                    <th class="text-center">Acciones</th>
+                    <th class="text-center">Transacciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee: ${employees}">
                     <td class="text-center" th:text="${employee.id}">Id</td>
                     <td class="text-center" th:text="${employee.firstName} + ' ' + ${employee.lastName}">Nombres</td>
-                    <td class="text-center" th:text="${employee.Email}">Email</td>
                     <td class="text-center" th:text="${employee.document}">Documento</td>
-                    <td class="text-center" th:text="${employee.enterprise}">Empresa</td>
+                    <td class="text-center" th:text="${employee.email}">Email</td>
                     <td class="text-center" th:text="${employee.role}">Rol</td>
                     <td class="text-center">
-                        <a th:href="@{/update-employee/{id}(id=${employee.id})}" class="btn btn-info">
-                            <i class='bx bxs-edit-alt fs-5'></i></a>
-                        <a th:onclick="deleteItem([[${employee.id}]], '/delete-employee/', '/get-employee')" class="btn btn-danger">
-                            <i class='bx bxs-trash fs-5'></i></a>
+                        <a th:href="@{/see-transactions/{id}(id=${employee.id})}" class="btn btn-info">
+                            <i class='bx bx-money'></i>
+                        </a>
                     </td>
                 </tr>
                 </tbody>

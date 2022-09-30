@@ -67,4 +67,14 @@ public class EmployeeService {
 
         return ResponseEntity.ok(null);
     }
+
+    public List<Employee> getEmployeesByEnterprise(long id) throws Exception {
+        try {
+            List<Employee> employees = repository.findByEnterpriseIs(id);
+            return employees;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
+    }
 }

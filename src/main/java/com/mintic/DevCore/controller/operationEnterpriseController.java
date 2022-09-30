@@ -1,5 +1,6 @@
 package com.mintic.DevCore.controller;
 
+import com.mintic.DevCore.model.Employee;
 import com.mintic.DevCore.model.Enterprise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class operationEnterpriseController {
 
     @Autowired
     private EnterpriseController enterpriseRepo;
+
+    @Autowired
+    private EmployeeController employeeRepo;
 
     @GetMapping("/get-enterprises")
     public String getEnterprises(Model model) {
@@ -54,5 +58,18 @@ public class operationEnterpriseController {
     public String deleteEnterprise(Model model, @PathVariable Long id) {
         enterpriseRepo.deleteEnterprise(id);
         return "redirect:/get-enterprises";
+    }
+
+    @GetMapping("/see-employees/{id}")
+    public String seeEmployeesByEnterprise(Model model, @PathVariable Long id, String name) throws Exception {
+        try {
+            List<Employee> employees = employeeRepo.getEmployeesByEnterprise(id);
+            String message = "Empleados de la empresa: " + name;
+            model.addAttribute("employees", employees);
+            model.addAttribute("message", message);
+            return "see-employees";
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }
